@@ -1,6 +1,6 @@
 \documentclass{dcbl/challenge}
 
-\setdoctitle{Der Titel meines Dokuments}
+\setdoctitle{Textedit}
 \setdocauthor{Stephan Bökelmann}
 \setdocemail{sboekelmann@ep1.rub.de}
 \setdocinstitute{AG Physik der Hadronen und Kerne}
@@ -8,20 +8,74 @@
 
 \begin{document}
 
-Jedes Challenge-Blatt beginnt mit einer kurzen Einleitung, die einen Kontext für den jeweiligen Zettel setzt. 
+Working on textfiles, needs us to read a file from the file-system, copy it into the RAM, manipulate the data of that copy, and write it back to the file-system.
+To perform such activities, we call a program, that already knows how to deal with these operations.
 
-\section*{Aufgaben}
+\section*{Exercises}
 \begin{aufgabe}
-    Löse die Gleichung $x^2 - 5x + 6 = 0$.
+    We start with an empty terminal and in our home-directory. 
+    Create a folder by using the command \texttt{mkdir <foldername>}. 
+    Navigate into it with the command \texttt{cd <foldername>}.
+    You can create an empty file by using the command \texttt{touch <filename>}.
+    Create a file called \texttt{hello.txt}.
 \end{aufgabe}
 
-\begin{aufgabe}[Für Fortgeschrittene]
-    Beweise den Satz des Pythagoras.
+\begin{aufgabe}
+    The standard text-editor is called \texttt{ed}.
+    To open the empty text-file with the program \texttt{ed} use the command \texttt{ed <filename>}.
+    This is the typical way of handing over a file-path to a program. 
+    First you type the program-name and as a parameter, following this command, the file-path to the file.
+    \texttt{ed} is a program from a time when the standard output of your machine was a line-printer, rather than a screen. 
+    Therefor it will only write as minimal as possible.
+    After starting ed, edit the file with the following commands:
+    \begin{itemize}
+        \item Type \texttt{a} and press return. This brings you into the \textit{append}-mode.
+        \item Type \texttt{This is a line of text} and press return.
+        \item Type \texttt{A second line.} and press return once more.
+        \item Type \texttt{.} and press return to leave the \textit{append}-mode. You are now back in \textit{control}-mode.
+        \item You appended the sentences to the end of the data that is stored in your RAM. Write the RAM back to your filesystem with the command \texttt{w}. \texttt{ed} will respond with the amount of bytes written.
+        \item Type \texttt{q} to quit ed.
+        \item You are back in your shell-session. Use \texttt{cat <filename>} to see the result.
+        \item Use \texttt{ls -la} to see a list of all files in your current directory with the corresponding filesize and addidional information.
+    \end{itemize}
 \end{aufgabe}
 
-\section*{Anmerkungen}
+\begin{aufgabe}
+    Even though \texttt{ed} is a powerful program, its use is limited and no longer state of the art.
+    The previous exercise was meant to demonstrate to you, that command-line text-editors work in two different modes: \textit{control}-mode and \textit{edit}-mode.
+    Keep that in mind in our next exercise.
+    We will use the linux package manager to install a more sophisticated text-editor.
+    To install the software-package \texttt{vim} use the following steps:
+    \begin{itemize}
+        \item Type \texttt{apt update} to update the package list of the \texttt{apt} package manager.
+        \item You will get an error message. This is due to the fact, that updating this list requires administrative rights. Repeat the command with the \texttt{sudo} prefix. \texttt{sudo apt update}.
+        \item Now install the package \texttt{vim} with the command \texttt{sudo apt install vim}.
+    \end{itemize}
+\end{aufgabe}
+
+\begin{aufgabe}
+    Use the command \texttt{vim <filename>} to open the file \texttt{hello.txt} with the editor \texttt{vim}.
+    \texttt{vim} stands for \textit{visual interface improved editor}. 
+    It is one of the most commonly used command line editors and will be our text-editor of choice in most use-cases.
+    Also in \texttt{vim} we have to differentiate between \textit{control}-mode and \textit{edit}-mode.
+    The \textit{control}-mode is the default mode and can be accessed by pressing the \texttt{Esc}-key. 
+    The \textit{edit}-mode can be accessed by pressing the \texttt{i}-key.
+    Manipulate your file and go back to the \textit{control}-mode with the \texttt{Esc}-key.
+    In order to execute a command in \texttt{vim} we have to use the \texttt{:} prefix.
+    Write \texttt{:w} after switching to \textit{control}-mode and press return to save the file.
+    Write \texttt{:q} to quit \texttt{vim}.
+\end{aufgabe}
+
+\begin{aufgabe}
+    In your shell, type \texttt{vimtutor} and take 20 minutes to work through the exercises, which are included in the standard \texttt{vim} installation.
+\end{aufgabe}
+
+\section*{Annotations}
 \begin{enumerate}
-    \item Link zu einem YouTube-Video: \url{https://www.youtube.com}
+    \item Linux-Foundation: Vim 101: \\\url{https://www.linuxfoundation.org/blog/blog/classic-sysadmin-vim-101-a-beginners-guide-to-vim}
+    \item Learn Vim while playing a game: \url{https://vim-adventures.com/}
+    \item Learn Vim for the last time: \url{https://danielmiessler.com/p/vim/}
+    \item The probably most complete Vim tutorial: \url{https://github.com/iggredible/Learn-Vim}
 \end{enumerate}
 
 \end{document}
